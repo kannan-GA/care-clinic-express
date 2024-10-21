@@ -230,7 +230,7 @@ const io = new Server(server, {
   cors: {
     origin: "*", // Allow your front-end origin
     methods: ["GET", "POST"],
-    credentials: true,
+    // credentials: true,
   },
 });
 
