@@ -225,10 +225,29 @@ app.put("/doctors/:id", async (req, res) => {
 });
 
 // Create HTTP server and initialize Socket.IO
+// const server = http.createServer(app);
+// const io = new Server(server, {
+//   cors: {
+//     origin: "http://localhost:5173", // Allow your front-end origin
+//     methods: ["GET", "POST"],
+//     credentials: true,
+//   },
+// });
+
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173", // Allow your front-end origin
+    origin: function (origin, callback) {
+      const allowedOrigins = [
+        "http://localhost:5173",
+        "https://care-clinic-demo.netlify.app",
+      ];
+      if (allowedOrigins.includes(origin) || !origin) {
+        callback(null, true); // Allow the request
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["GET", "POST"],
     credentials: true,
   },
