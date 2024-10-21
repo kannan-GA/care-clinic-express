@@ -228,9 +228,9 @@ app.put("/doctors/:id", async (req, res) => {
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "*", // Allow your front-end origin
+    origin: "https://care-clinic-demo.netlify.app", // Allow your front-end origin
     methods: ["GET", "POST"],
-    // credentials: true,
+    credentials: true,
   },
 });
 
