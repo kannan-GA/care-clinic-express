@@ -1,8 +1,0 @@
-[build]
-  functions = "functions"  # This should match the directory containing your functions
-
-[[redirects]]
-  from = "/api/*"         # This redirect pattern is crucial
-  to = "/.netlify/functions/index"  # Ensure this points to your handler
-  status = 200
-
